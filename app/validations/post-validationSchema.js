@@ -1,6 +1,6 @@
-const { title } = require('../../../Job-portal-server/app/validations/job-validationSchema')
-const Post = require('../models/post-model')
-const { exists } = require('../models/user-model')
+
+
+
 
 const postValidationSchema = {
     title:{
