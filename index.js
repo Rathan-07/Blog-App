@@ -17,7 +17,7 @@ const authorizedUser = require('./app/middlewares/authorized');
 
 // Initialize Express app
 const app = express();
-const port = 3334;
+const port = process.env.PORT
 
 // Database configuration
 configureDB();
