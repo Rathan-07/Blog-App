@@ -35,14 +35,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve static files from the uploads directory
 
 // Logging configuration
-const logFilePath = path.join('C:', 'Users', 'Rathan', 'Desktop', 'dct', 'blog-app', 'logs.txt');
-const accessLogStream = fs.createWriteStream(path.join(logFilePath), { flags: 'a' });
-app.use(morgan('combined', { stream: accessLogStream }));
+// const logFilePath = path.join('C:', 'Users', 'Rathan', 'Desktop', 'dct', 'blog-app', 'logs.txt');
+// const accessLogStream = fs.createWriteStream(path.join(logFilePath), { flags: 'a' });
+// app.use(morgan('combined', { stream: accessLogStream }));
 
-app.use(function(req, res, next) {
-    console.log(`${req.ip} - ${req.method} - ${req.url} - ${new Date()}`);
-    next();
-});
+// app.use(function(req, res, next) {
+//     console.log(`${req.ip} - ${req.method} - ${req.url} - ${new Date()}`);
+//     next();
+// });
 
 // Validation schemas
 const userRegisterValidationSchema = require('./app/validations/user-register-validations');
