@@ -24,11 +24,21 @@ configureDB();
 
 // Middleware setup
 app.use(express.json());
-app.use(cors({
-    origin: 'http://localhost:3334',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+const allowedOrigins = ['http://localhost:3334', 'https://blog-app-six-chi.vercel.app'];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
-}));
+    optionsSuccessStatus: 204
+};
+app.use(cors(corsOptions));
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
